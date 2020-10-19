@@ -1,6 +1,6 @@
 import { app } from './app';
 
-const PORTA = 3000;
+const PORTA = 4000;
 
 const server =
     app.listen(PORTA, () => console.log(`App ouvindo na porta ${PORTA}`));

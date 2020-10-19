@@ -19,5 +19,5 @@ export class Usuario {
     email: string;
 
     @OneToMany(() => Lancamento, lancamento => lancamento.usuario)
-    lancamentos: Lancamento[];
+    lancamentos: Lancamento[ ];
 }

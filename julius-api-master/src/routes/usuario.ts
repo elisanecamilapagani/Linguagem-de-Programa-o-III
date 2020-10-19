@@ -1,3 +1,4 @@
+import { Lancamento } from './../entity/Lancamento';
 import { Usuario } from './../entity/Usuario';
 import { Router } from 'express';
 import { UsuarioController } from '../controller/UsuarioController';
@@ -27,8 +28,17 @@ routerUsuario.get('/', async (req, res) => {
 /**
  * Serviço para recuperar os lançamentos de um determinado usuário
  */
-routerUsuario.get('/lancamentos/:idUsuario', async (req, res) => {
+routerUsuario.get('/lancamento/:idUsuario', async (req, res) => {
     const idUsuario = parseInt(req.params.idUsuario);
     const lancamentos = await usuarioCtrl.recuperarLancamentosDoUsuario(idUsuario);
-    res.json(lancamentos);
+    if (lancamentos) {
+        res.json(lancamentos);
+    } else {
+        res.status(200).json({ mensagem: 'Usuário não existe' });
+    }
 });
+
+
+
+
+

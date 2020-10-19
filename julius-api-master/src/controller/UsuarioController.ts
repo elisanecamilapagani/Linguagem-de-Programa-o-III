@@ -1,5 +1,7 @@
+import { Lancamento } from './../entity/Lancamento';
 import { getManager } from "typeorm";
 import { Usuario } from "../entity/Usuario";
+
 
 export class UsuarioController {
 
@@ -23,5 +25,6 @@ export class UsuarioController {
             relations: ['lancamentos']
         });
         return usuario.lancamentos;
+
     }
 }
