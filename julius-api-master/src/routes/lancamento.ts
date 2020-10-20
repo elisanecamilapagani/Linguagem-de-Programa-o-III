@@ -47,7 +47,6 @@ routerLancamento.put('/:id', async(req, res) => {
     const lancamento =  new Lancamento(valor, descricao, data, usuario);
     lancamento.id = alterarLancamento 
     await lancamentoCtrl.AlterarLancamentoPorId(alterarLancamento, lancamento);
-
     if(lancamento){
         res.status(200).json({ mensagem: 'Lançamento atualizado' });
     }else{

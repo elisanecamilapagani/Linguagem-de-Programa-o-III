@@ -31,12 +31,30 @@ routerUsuario.get('/', async (req, res) => {
 routerUsuario.get('/lancamento/:idUsuario', async (req, res) => {
     const idUsuario = parseInt(req.params.idUsuario);
     const lancamentos = await usuarioCtrl.recuperarLancamentosDoUsuario(idUsuario);
-    if (lancamentos) {
-        res.json(lancamentos);
-    } else {
-        res.status(200).json({ mensagem: 'Usuário não existe' });
-    }
+        res.json(lancamentos);      
 });
+
+/**
+ * serviço para recuperar lançamento positivo de um determinado usuario
+ */
+
+ routerUsuario.get('/lancamento/entrada/:idUsuario', async (req, res) => {
+    const idUsuario = parseInt(req.params.idUsuario);
+    const valorPositivo= await usuarioCtrl.recuperarLancamentoPositivoDoUsuario(idUsuario);
+        res.json(valorPositivo );
+});
+
+/**
+ * serviço para recuperar lançamentos negativo de um usuário
+ */
+
+routerUsuario.get('/lancamento/saida/:idUsuario', async (req, res) => {
+    const idUsuario = parseInt(req.params.idUsuario);
+    const valorNegativo= await usuarioCtrl.recuperarLancamentoNegativoDoUsuario(idUsuario);
+   res.json (valorNegativo)
+});
+
+
 
 
 
